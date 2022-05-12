@@ -1,0 +1,112 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./validacao.php"></script>
+    <title>Formulario</title>
+</head>
+<body>
+
+    <h3 class="text-center">Formulário</h3>
+ 
+
+    <form action="./validacao.php" method="post">
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="nome">Nome:</label>
+                <input type="text" id="Nome" name="nome" class="form-control" placeholder="Nome" >
+            </div>
+    
+            <div class="form-group col-md-4">
+                <label for="nome">Sobrenome:</label>
+                <input type="text" id="sobrenome" name="sobrenome" class="form-control" placeholder="Sobrenome" >
+            </div>
+    
+            <div class="form-group col-md-4">
+                <label for="nome">Data de Nascimento:</label>
+                <input type="date" id="dataNascimento" name="dataNascimento" class="form-control" placeholder="Nascimento" >
+            </div>
+        </div>
+    
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="endereco">Endereço:</label>
+                <input type="text" id="endereco" name="endereco" class="form-control" placeholder="Rua Sabia, nº 0">
+            </div>
+        
+            <div class="form-group col-md-4">
+                <label for="cep">CEP:</label>
+                <input type="text" id="cep" name="cep" class="form-control"  placeholder="CEP" >
+            </div>
+        </div>
+    
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="local">Local:</label>
+                <input type="text" id="local" name="local" class="form-control" placeholder="Apartamento, hotel, casa, etc.">
+            </div>
+    
+            <div class="form-group col-md-4">
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" name="telefone" class="form-control"  placeholder="Telefone" >
+            </div>
+    
+        </div>
+        
+    
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="cidade">Cidade:</label>
+                <input type="text" id="cidade" name="cidade" class="form-control" placeholder="Cidade">
+            </div>
+    
+            <div class="form-group col-md-4">
+                <label for="estado">Estado:</label>
+                <select name="estado" id="estado" name="estado" class="form-control">
+                    <option selected>Escolher</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceara</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espirito Santo</option>
+                    <option value="GO">Goias</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Parana</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piaui</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                </select>
+            </div>
+        </div>
+
+        <button class="btn btn-primary btn-lg">Enviar</button>
+
+    </form>
+
+    
+    
+
+
+</body>
+</html>
