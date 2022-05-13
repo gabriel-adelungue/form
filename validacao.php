@@ -36,7 +36,11 @@ echo "<br>";
 
 if (empty($dataNascimento)) {
     echo "Favor preencher o campo Data de Nascimento";
-} 
+} else if(!preg_match('/^\d{1,2}\/\d{1,2}\/\d{4}$/', $dataNascimento)) {
+    echo "Data inválida.";
+} else {
+    echo "Data OK";
+}
 
 
 echo "<br>";
@@ -51,14 +55,10 @@ echo "<br>";
 
 if (empty($cep)) {
     echo "Favor preencher o campo CEP";
-} if(!preg_match("/\d{1,8}/", $cep)){    
-    echo "Cep deve conter 8 digitos";    
-} else if (is_numeric($cep) == false) {
-    echo "Digitar somente números";
-} else if (preg_match('/^[a-zA-Z0-9]+/', $cep)) { // preg_match('/^[a-zA-Z0-9]+/', $cep) - bloquear caracteres especiais
-    echo 'Cep OK!';
+} else if(!preg_match('/^[0-9]{5,5}([- ]?[0-9]{3,3})?$/', $cep)) {
+    echo "CEP inválido.";
 } else {
-    echo 'Cep tem caracteres inválidos...';
+    echo 'Cep OK';
 }
 
 
@@ -75,12 +75,10 @@ echo "<br>";
 
 if (empty($telefone)) {
     echo "Favor preencher o campo Telefone";
-} else if (!is_numeric($telefone)) {
-    echo "Digitar somente números";
-} else if (preg_match('/^[a-zA-Z0-9]+/', $telefone) && !is_numeric($telefone)) {
-    echo 'Telefone OK!';
+}  else if(!preg_match('^\(+[0-9]{2,3}\) [0-9]{5}-[0-9]{4}$^', $telefone)){
+    echo "Telefone inváildo.";
 } else {
-    echo 'Telefone tem caracteres inválidos...';
+    echo "Telefone OK";
 }
 
 
@@ -95,5 +93,7 @@ if (empty($cidade)) {
 } else {
     echo 'Cidade tem caracteres inválidos...';
 }
+
+
 
 ?>
