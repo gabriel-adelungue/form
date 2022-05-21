@@ -19,17 +19,17 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="nome">Nome:</label>
-                <input type="text" id="Nome" name="nome" class="form-control" placeholder="Nome" >
+                <input type="text" id="Nome" name="nome" class="form-control" placeholder="Nome" onKeyup="retira(this);">
             </div>
     
             <div class="form-group col-md-4">
-                <label for="nome">Sobrenome:</label>
-                <input type="text" id="sobrenome" name="sobrenome" class="form-control" placeholder="Sobrenome" >
+                <label for="sobrenome">Sobrenome:</label>
+                <input type="text" id="sobrenome" name="sobrenome" class="form-control" placeholder="Sobrenome" onKeyup="retira(this);">
             </div>
     
             <div class="form-group col-md-4">
-                <label for="nome">Data de Nascimento:</label>
-                <input type="text" id="dataNascimento" name="dataNascimento" class="form-control" placeholder="XX/XX/XXXX" >
+                <label for="dataNascimento">Data de Nascimento:</label>
+                <input type="text" id="dataNascimento" name="dataNascimento" class="form-control" placeholder="XX/XX/XXXX" onKeyup="somenteNumeros(this);">
             </div>
         </div>
     
@@ -41,19 +41,19 @@
         
             <div class="form-group col-md-4">
                 <label for="cep">CEP:</label>
-                <input type="text" id="cep" name="cep" class="form-control"  placeholder="XXXXX-XXX" >
+                <input type="text" id="cep" name="cep" class="form-control"  placeholder="XXXXX-XXX" onKeyup="somenteNumeros(this);">
             </div>
         </div>
     
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="local">Local:</label>
-                <input type="text" id="local" name="local" class="form-control" placeholder="Apartamento, hotel, casa, etc.">
+                <label for="complemento">Complemento:</label>
+                <input type="text" id="complemento" name="complemento" class="form-control" placeholder="Apartamento, hotel, casa, etc." onKeyup="retira(this);">
             </div>
     
             <div class="form-group col-md-4">
                 <label for="telefone">Telefone:</label>
-                <input type="tel" id="telefone" name="telefone" class="form-control"  placeholder="(XXX) XXXXX-XXXX" >
+                <input type="tel" id="telefone" name="telefone" class="form-control"  placeholder="(XXX) XXXXX-XXXX" onKeyup="somenteNumeros(this);">
             </div>
     
         </div>
@@ -62,7 +62,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="cidade">Cidade:</label>
-                <input type="text" id="cidade" name="cidade" class="form-control" placeholder="Cidade">
+                <input type="text" id="cidade" name="cidade" class="form-control" placeholder="Cidade" onKeyup="retira(this);">
             </div>
     
             <div class="form-group col-md-4">
@@ -100,13 +100,17 @@
             </div>
         </div>
 
-        <button class="btn btn-primary btn-lg">Enviar</button>
+        <button type="submit" class="btn btn-primary btn-lg" onclick="return validar()">Enviar</button>
 
+        <small id="textForm"></small>
+        
     </form>
 
     
-    
+    <script src="./validacao.js"></script>
 
 
 </body>
 </html>
+
+
