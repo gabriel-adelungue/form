@@ -1,51 +1,3 @@
-function retira(objResp) {  
-    var varString = new String(objResp.value);  
-    var stringAcentos = new String("áàéóúãõâêíôçÁÀÉÓÚÃÕÂÊÍÔÇ?'(){}[]???!@#&*-+=|");  
-    var stringSemAcento = new String("aaeouaoaeiocAAEOUAOAEIOC        *         ");  
-      
-    var i = new Number();  
-    var j = new Number();  
-    var cString = new String();  
-    var varRes = '';  
-      
-    for (i = 0; i < varString.length; i++) {  
-    cString = varString.substring(i, i + 1);  
-    for (j = 0; j < stringAcentos.length; j++) {  
-    if (stringAcentos.substring(j, j + 1) == cString){  
-    cString = stringSemAcento.substring(j, j + 1);  
-    }  
-    }  
-    varRes += cString;  
-    }  
-    objResp.value = varRes.toLowerCase();  
-    }
-
-
-    function somenteNumeros(objResp) {  
-        var varString = new String(objResp.value);  
-        var stringAcentos = new String("qwertyuiopasdfghjklçzxcvbnm!@#$%&*_+='[]{}:;<>");  
-        var stringSemAcento = new String("                                              ");  
-          
-        var i = new Number();  
-        var j = new Number();  
-        var cString = new String();  
-        var varRes = '';  
-          
-        for (i = 0; i < varString.length; i++) {  
-        cString = varString.substring(i, i + 1);  
-        for (j = 0; j < stringAcentos.length; j++) {  
-        if (stringAcentos.substring(j, j + 1) == cString){  
-        cString = stringSemAcento.substring(j, j + 1);  
-        }  
-        }  
-        varRes += cString;  
-        }  
-        objResp.value = varRes.toLowerCase();  
-        }
-
-
-
-
 function validar() {
     var nome = formuser.nome.value;
     var sobrenome = formuser.sobrenome.value;
@@ -54,6 +6,7 @@ function validar() {
     var cep = formuser.cep.value;
     var complemento = formuser.complemento.value;
     var telefone = formuser.telefone.value;
+    var cpf = formuser.cpf.value;
     var cidade = formuser.cidade.value;
     var estado = formuser.estado.value;
 
@@ -106,9 +59,16 @@ function validar() {
         return false;
     }
 
+
     if(telefone == ""){
         alert("Favor preencher campo Telefone");
         formuser.telefone.focus();
+        return false;
+    }
+
+    if(cpf == ""){
+        alert("Favor preencher campo CPF");
+        formuser.cpf.focus();
         return false;
     }
 
