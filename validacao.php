@@ -9,6 +9,7 @@ $endereco = $_POST["endereco"];
 $cep = $_POST["cep"];
 $complemento = $_POST["complemento"];
 $telefone = $_POST["telefone"];
+$cpf = $_POST["cpf"];
 $cidade = $_POST["cidade"];
 $estado = $_POST["estado"];
 
@@ -104,6 +105,11 @@ if (empty($telefone)) {
     // echo "Telefone OK";
 }
 
+if (empty($cpf)) {
+    echo "Favor preencher campo CPF";
+    exit();
+}
+
 
 echo "<br>";
 
@@ -120,8 +126,26 @@ if (empty($cidade)) {
     exit();
 }
 
-$sql = "INSERT INTO usuarios(Nome, Sobrenome, DataNascimento, Endereco, Cep, Complemento, Telefone, Cidade, Estado) 
-VALUES ('$nome', '$sobreNome', '$dataNascimento', '$endereco', '$cep', '$complemento', '$telefone', '$cidade', '$estado')";
-$result = mysqli_query($conexao, $sql, MYSQLI_STORE_RESULT);
+
+$usuarioExiste = mysqli_query($conexao, "SELECT * FROM usuarios WHERE cpf = '$cpf'", MYSQLI_STORE_RESULT);
+if (@mysqli_num_rows($usuarioExiste) > 0) {
+    echo '
+        <script type="text/javascript">
+             alert("Esse usuario já existe"); 
+        </script>
+    ';
+} else {
+    $sql = "INSERT INTO usuarios(nome, sobrenome, data_nascimento, endereco, cep, complemento, telefone, cpf, cidade, estado) 
+    VALUES ('$nome', '$sobreNome', '$dataNascimento', '$endereco', '$cep', '$complemento', '$telefone', '$cpf', '$cidade', '$estado')";
+    $result = mysqli_query($conexao, $sql, MYSQLI_STORE_RESULT);
+
+    echo '
+        <script type="text/javascript">
+            alert("Usuario incluído com sucesso!!!"); 
+        </script>
+    ';
+}
+
+echo '<script type="text/javascript">location.replace("index.html");</script>';
 
 ?>
