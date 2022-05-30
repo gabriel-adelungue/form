@@ -74,6 +74,10 @@ function validar() {
         alert("Digitar somente letras");
         formuser.complemento.focus();
         return false;
+    } else if (complemento.match(/[^a-zà-ú]/gi)) {
+        alert("Campo Complemento contém caracteres invalidos");
+        formuser.complemento.focus();
+        return false;
     }
 
 
@@ -95,6 +99,10 @@ function validar() {
         return false;
     } else if (!isNaN(cidade)){
         alert("Digitar somente letras");
+        formuser.cidade.focus();
+        return false;
+    } else if (cidade.match(/[^a-zà-ú]/gi)) {
+        alert("Campo Cidade contém caracteres invalidos");
         formuser.cidade.focus();
         return false;
     }
