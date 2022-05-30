@@ -10,12 +10,21 @@ function validar() {
     var cidade = formuser.cidade.value;
     var estado = formuser.estado.value;
 
+
     if(nome == ""){
         alert("Favor preencher campo Nome");
         formuser.nome.focus();
         return false;
     } else if (!isNaN(nome)){
         alert("Digitar somente letras");
+        formuser.nome.focus();
+        return false;
+    } else if (nome.length < 2) {
+        alert("Campo Nome deve ter no minimo 2 caracteres")
+        formuser.nome.focus();
+        return false;
+    } else if (nome.match(/[^a-zà-ú]/gi)) {
+        alert("Campo Nome contém caracteres invalidos");
         formuser.nome.focus();
         return false;
     }
@@ -27,6 +36,14 @@ function validar() {
         return false;
     } else if (!isNaN(sobrenome)){
         alert("Digitar somente letras");
+        formuser.sobrenome.focus();
+        return false;
+    } else if (sobrenome.length < 2) {
+        alert("Campo Sobrenome deve ter no minimo 2 caracteres")
+        formuser.sobrenome.focus();
+        return false;
+    } else if (sobrenome.match(/[^a-zà-ú]/gi)) {
+        alert("Campo Sobrenome contém caracteres invalidos");
         formuser.sobrenome.focus();
         return false;
     }
