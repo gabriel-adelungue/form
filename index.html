@@ -12,6 +12,7 @@
 </head>
 <body>
 
+
     <h3 class="text-center">Formulário</h3>
  
 
@@ -20,12 +21,12 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome" ">
+                <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome" maxlength="25" onkeyup="maiuscula(this)">
             </div>
     
             <div class="form-group col-md-4">
                 <label for="sobrenome">Sobrenome:</label>
-                <input type="text" id="sobrenome" name="sobrenome" class="form-control" placeholder="Sobrenome" ">
+                <input type="text" id="sobrenome" name="sobrenome" class="form-control" placeholder="Sobrenome" maxlength="25" onkeyup="maiuscula(this)">
             </div>
     
             <div class="form-group col-md-4">
@@ -37,7 +38,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="endereco">Endereço:</label>
-                <input type="text" id="endereco" name="endereco" class="form-control" placeholder="Rua Sabia, nº 0">
+                <input type="text" id="endereco" name="endereco" class="form-control" placeholder="Rua Sabia, nº 0" onkeyup="maiuscula(this)">
             </div>
         
             <div class="form-group col-md-4">
@@ -49,7 +50,7 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="complemento">Complemento:</label>
-                <input type="text" id="complemento" name="complemento" class="form-control" placeholder="Apartamento, hotel, casa, etc." ">
+                <input type="text" id="complemento" name="complemento" class="form-control" placeholder="Apartamento, hotel, casa, etc." onkeyup="maiuscula(this)">
             </div>
     
             <div class="form-group col-md-4">
@@ -68,7 +69,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="cidade">Cidade:</label>
-                <input type="text" id="cidade" name="cidade" class="form-control" placeholder="Cidade"">
+                <input type="text" id="cidade" name="cidade" class="form-control" placeholder="Cidade" onkeyup="maiuscula(this)">
             </div>
     
             <div class="form-group col-md-4">
@@ -108,15 +109,21 @@
 
         <button type="submit" class="btn btn-primary btn-lg" onclick="return validar()">Enviar</button>
 
-        <small id="textForm"></small>
         
     </form>
 
     <script>
+
+        function maiuscula(transformaMaiuscula)
+        {
+            res = transformaMaiuscula.value.toUpperCase();
+            transformaMaiuscula.value = res; 
+        }
+
         $("#telefone").mask("(99) 99999-9999");
         $("#cep").mask("99999-999");
         $("#dataNascimento").mask("99/99/9999");
-        $("#cpf").mask("999.999.999-99");a
+        $("#cpf").mask("999.999.999-99");
     </script>
     
     <script src="./validacao.js"></script>
@@ -124,4 +131,3 @@
 
 </body>
 </html>
-
