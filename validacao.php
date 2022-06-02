@@ -5,6 +5,7 @@ include_once('./config.php');
 $nome = $_POST["nome"];
 $sobreNome = $_POST["sobrenome"];
 $dataNascimento = $_POST["dataNascimento"];
+$senha = $_POST['senha'];
 $endereco = $_POST["endereco"];
 $cep = $_POST["cep"];
 $complemento = $_POST["complemento"];
@@ -12,6 +13,8 @@ $telefone = $_POST["telefone"];
 $cpf = $_POST["cpf"];
 $cidade = $_POST["cidade"];
 $estado = $_POST["estado"];
+
+
 
 
 if (empty($nome)) {
@@ -22,9 +25,9 @@ if (empty($nome)) {
     exit();
 } else if (preg_match('/[a-zA-Z\s]{1,}/', $nome)) {
     // echo 'Nome OK!';
-} else {
     echo 'Nome tem caracteres inválidos...';
-    exit();
+} else {
+    //exit();
 }
 
 echo "<br>";
@@ -135,8 +138,8 @@ if (@mysqli_num_rows($usuarioExiste) > 0) {
         </script>
     ';
 } else {
-    $sql = "INSERT INTO usuarios(nome, sobrenome, data_nascimento, endereco, cep, complemento, telefone, cpf, cidade, estado) 
-    VALUES ('$nome', '$sobreNome', '$dataNascimento', '$endereco', '$cep', '$complemento', '$telefone', '$cpf', '$cidade', '$estado')";
+    $sql = "INSERT INTO usuarios(nome, sobrenome, data_nascimento, senha, endereco, cep, complemento, telefone, cpf, cidade, estado) 
+    VALUES ('$nome', '$sobreNome', '$dataNascimento', '$senha', '$endereco', '$cep', '$complemento', '$telefone', '$cpf', '$cidade', '$estado')";
     $result = mysqli_query($conexao, $sql, MYSQLI_STORE_RESULT);
 
     echo '
@@ -144,8 +147,10 @@ if (@mysqli_num_rows($usuarioExiste) > 0) {
             alert("Usuario incluído com sucesso!!!"); 
         </script>
     ';
+
+   
 }
 
-echo '<script type="text/javascript">location.replace("index.html");</script>';
+echo '<script type="text/javascript">location.replace("login.html");</script>';
 
 ?>
