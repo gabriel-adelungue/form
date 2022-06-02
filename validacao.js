@@ -2,6 +2,7 @@ function validar() {
     var nome = formuser.nome.value;
     var sobrenome = formuser.sobrenome.value;
     var dataNascimento = formuser.dataNascimento.value;
+    var senha = formuser.senha.value;
     var endereco = formuser.endereco.value;
     var cep = formuser.cep.value;
     var complemento = formuser.complemento.value;
@@ -101,11 +102,7 @@ function validar() {
         alert("Digitar somente letras");
         formuser.cidade.focus();
         return false;
-    } else if (cidade.match(/[^a-zà-ú]/gi)) {
-        alert("Campo Cidade contém caracteres invalidos");
-        formuser.cidade.focus();
-        return false;
-    }
+    } 
 }
 
     
