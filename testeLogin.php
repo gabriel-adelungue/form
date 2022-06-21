@@ -5,8 +5,8 @@
     if (isset($_POST['submit']) && !empty($_POST['nome']) && !empty($_POST['senha'])) {
         // Acessa o sistema
         include_once('config.php');
-        $nome = $_POST['nome'];
-        $senha = $_POST['senha'];
+        $nome = addslashes($_POST['nome']);
+        $senha = addslashes($_POST['senha']);
 
         // print_r('Nome: ' . $nome);
         // print_r('<br>');
@@ -31,6 +31,8 @@
         }
     } else {
         // Não acessa
+        
         header('Location: login.html');
+
     }
 ?>
