@@ -5,7 +5,7 @@ include_once('./config.php');
 $nome = $_POST["nome"];
 $sobreNome = $_POST["sobrenome"];
 $dataNascimento = $_POST["dataNascimento"];
-$senha = $_POST['senha'];
+$senha = password_hash($_POST["senha"], PASSWORD_DEFAULT);
 $endereco = $_POST["endereco"];
 $cep = $_POST["cep"];
 $complemento = $_POST["complemento"];
@@ -141,6 +141,7 @@ if (@mysqli_num_rows($usuarioExiste) > 0) {
     $sql = "INSERT INTO usuarios(nome, sobrenome, data_nascimento, senha, endereco, cep, complemento, telefone, cpf, cidade, estado) 
     VALUES ('$nome', '$sobreNome', '$dataNascimento', '$senha', '$endereco', '$cep', '$complemento', '$telefone', '$cpf', '$cidade', '$estado')";
     $result = mysqli_query($conexao, $sql, MYSQLI_STORE_RESULT);
+
 
     echo '
         <script type="text/javascript">
