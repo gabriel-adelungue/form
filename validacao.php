@@ -2,19 +2,17 @@
 
 include_once('./config.php');
 
-$nome = $_POST["nome"];
-$sobreNome = $_POST["sobrenome"];
-$dataNascimento = $_POST["dataNascimento"];
+$nome = limpaPost($_POST["nome"]);
+$sobreNome = limpaPost($_POST["sobrenome"]);
+$dataNascimento = limpaPost($_POST["dataNascimento"]);
 $senha = password_hash($_POST["senha"], PASSWORD_DEFAULT);
-$endereco = $_POST["endereco"];
-$cep = $_POST["cep"];
-$complemento = $_POST["complemento"];
-$telefone = $_POST["telefone"];
-$cpf = $_POST["cpf"];
-$cidade = $_POST["cidade"];
-$estado = $_POST["estado"];
-
-
+$endereco = limpaPost($_POST["endereco"]);
+$cep = limpaPost($_POST["cep"]);
+$complemento = limpaPost($_POST["complemento"]);
+$telefone = limpaPost($_POST["telefone"]);
+$cpf = limpaPost($_POST["cpf"]);
+$cidade = limpaPost($_POST["cidade"]);
+$estado = limpaPost($_POST["estado"]);
 
 
 if (empty($nome)) {
@@ -129,6 +127,13 @@ if (empty($cidade)) {
     exit();
 }
 
+function limpaPost($valor)
+{
+    $valor = trim($valor);
+    $valor = stripslashes($valor);
+    $valor = htmlspecialchars($valor);
+    return $valor;
+}
 
 $usuarioExiste = mysqli_query($conexao, "SELECT * FROM usuarios WHERE cpf = '$cpf'", MYSQLI_STORE_RESULT);
 if (@mysqli_num_rows($usuarioExiste) > 0) {
@@ -155,3 +160,5 @@ if (@mysqli_num_rows($usuarioExiste) > 0) {
 echo '<script type="text/javascript">location.replace("login.html");</script>';
 
 ?>
+
+
