@@ -5,7 +5,7 @@ include_once('./config.php');
 $nome = limpaPost($_POST["nome"]);
 $sobreNome = limpaPost($_POST["sobrenome"]);
 $dataNascimento = limpaPost($_POST["dataNascimento"]);
-$senha = password_hash($_POST["senha"], PASSWORD_DEFAULT);
+$senha = limpaPost(password_hash($_POST["senha"], PASSWORD_DEFAULT));
 $endereco = limpaPost($_POST["endereco"]);
 $cep = limpaPost($_POST["cep"]);
 $complemento = limpaPost($_POST["complemento"]);
