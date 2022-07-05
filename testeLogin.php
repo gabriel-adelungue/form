@@ -57,7 +57,12 @@
     }  else {
         // Não acessa
         
-        header('Location: login.html');
+        echo ("<script>
+                    window.alert('Preencha todos os campos para poder se logar')
+                    window.location.href='./login.html';
+                    </script>"
+                );
+        //header('Location: login.html');
        
     }
 ?>
