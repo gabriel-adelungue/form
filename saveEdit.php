@@ -31,6 +31,11 @@
 
         $result = $conexao->query($sqlUpdate);
     }
-    header('Location: sistema.php');
+    echo ("<script>
+                    window.alert('Registro alterado com sucesso')
+                    window.location.href='./sistema.php';
+                    </script>"
+                );
+    //header('Location: sistema.php');
 
 ?>
