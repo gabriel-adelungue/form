@@ -55,6 +55,16 @@ function validar() {
         return false;
     }
 
+    if(senha == ""){
+        alert("Favor preencher campo Senha");
+        formuser.senha.focus();
+        return false;
+    } else if(senha.length < 2) {
+        alert("Senha deve conter no minimo 2 caracteres");
+        formuser.senha.focus();
+        return false;
+    } 
+
     if(endereco == ""){
         alert("Favor preencher campo Endereço");
         formuser.endereco.focus();
@@ -102,8 +112,14 @@ function validar() {
         alert("Digitar somente letras");
         formuser.cidade.focus();
         return false;
-    } 
-}
+    }
+    
+    if(estado == ""){
+        alert("Favor preencher campo Estado");
+        formuser.estado.focus();
+        return false;
+    }
 
+}
     
     
