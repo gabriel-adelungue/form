@@ -21,12 +21,24 @@
         if (password_verify($senha, $usuario['senha'])) {
             $_SESSION['nome'] = $nome;
             $_SESSION['senha'] = $senha;
-            header('Location: sistema.php');
+            echo ("<script>
+                    window.alert('Login efetuado com sucesso')
+                    window.location.href='./sistema.php';
+                    </script>"
+                );
+            // header('Location: sistema.php');
         } else {
             unset($_SESSION['nome']);
             unset($_SESSION['senha']);
-            header('Location: login.html');
+            echo ("<script>
+                    window.alert('Usuario ou senha invalido')
+                    window.location.href='./login.html';
+                    </script>"
+                );
+            // header('Location: login.html');
         }
+        
+
 
         //Código antigo sem HASH
         // print_r($sql);
