@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -42,14 +42,15 @@
             </div>
 
             <div class="form-group col-md-4">
+                <label for="cep">CEP:</label>
+                <input type="text" id="cep" name="cep" class="form-control" >
+            </div>
+
+            <div class="form-group col-md-4">
                 <label for="endereco">Endereço:</label>
                 <input type="text" id="endereco" name="endereco" class="form-control" placeholder="Rua Sabia, nº 0" onkeyup="maiuscula(this)">
             </div>
         
-            <div class="form-group col-md-4">
-                <label for="cep">CEP:</label>
-                <input type="text" id="cep" name="cep" class="form-control" >
-            </div>
         </div>
     
         <div class="form-row">
@@ -117,6 +118,8 @@
         
     </form>
 
+    <script src="js/jquery-3.6.0.js"></script>
+
     <script>
 
         function maiuscula(transformaMaiuscula)
@@ -129,6 +132,27 @@
         $("#cep").mask("99999-999");
         $("#dataNascimento").mask("99/99/9999");
         $("#cpf").mask("999.999.999-99");
+
+        $(function(){
+            $("#cep").blur(function(){
+                var valor = $(this).val();
+
+                $.ajax({
+                    url: "https://viacep.com.br/ws/" + valor + "/json/",
+                    type: "GET",
+                    success: function(dados, status){
+                        $('#cidade').val(dados.localidade);
+                        $('#estado').val(dados.uf);
+                        $('#endereco').val(dados.logradouro);
+                    },
+                    error: function(){
+                        alert('Houve um problema na conexão');
+                    }
+
+                })
+
+            })
+        })
     </script>
     
     <script src="./validacao.js"></script>
