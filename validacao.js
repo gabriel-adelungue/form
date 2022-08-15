@@ -10,6 +10,7 @@ function validar() {
     var cpf = formuser.cpf.value;
     var cidade = formuser.cidade.value;
     var estado = formuser.estado.value;
+    var email = formuser.email.value;
 
 
     if(nome == ""){
@@ -46,6 +47,20 @@ function validar() {
     } else if (sobrenome.match(/[^a-zà-ú]/gi)) {
         alert("Campo Sobrenome contém caracteres invalidos");
         formuser.sobrenome.focus();
+        return false;
+    }
+
+    if(email == ""){
+        alert("Favor preencher campo Email");
+        formuser.email.focus();
+        return false;
+    } else if (!isNaN(email)){
+        alert("Digitar somente letras");
+        formuser.email.focus();
+        return false;
+    } else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)){
+        alert("Campo email inválido!");
+        formuser.email.focus();
         return false;
     }
 
