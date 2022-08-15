@@ -13,6 +13,21 @@ $telefone = limpaPost($_POST["telefone"]);
 $cpf = limpaPost($_POST["cpf"]);
 $cidade = limpaPost($_POST["cidade"]);
 $estado = limpaPost($_POST["estado"]);
+$email = limpaPost($_POST["email"]);
+
+$arquivo = "
+    <html>
+        <p>Seja bem vindo ao nosso sistema <b>$nome</b>!</p>
+    </html>
+";
+
+$assunto = "Mensagem de Boas Vindas";
+
+$headers  = "MIME-Version: 1.0\n";
+$headers .= "Content-type: text/html; charset=iso-8859-1\n";
+$headers .= "From: $nome <$email>";
+
+mail($email, $assunto, $arquivo, $headers);
 
 
 if (empty($nome)) {
@@ -21,12 +36,12 @@ if (empty($nome)) {
 }  else if (is_numeric($nome)) {
     echo "Digitar somente letras";
     exit();
-} else if (preg_match('/[a-zA-Z\s]{1,}/', $nome)) {
-    // echo 'Nome OK!';
-    echo 'Nome tem caracteres inválidos...';
-} else {
-    //exit();
-}
+ } //else if (preg_match('/[a-zA-Z\s]{1,}/', $nome)) {
+//     // echo 'Nome OK!';
+//     echo 'Nome tem caracteres inválidos...';
+// } else {
+//     //exit();
+// }
 
 echo "<br>";
 
@@ -40,6 +55,19 @@ if (empty($sobreNome)) {
     // echo 'Sobrenome OK!';
 } else {
     echo 'Sobrenome tem caracteres inválidos...';
+    exit();
+}
+
+echo "<br>";
+
+if (empty($email)) {
+    echo "Favor preencher campo email";
+    exit();
+} else if (is_numeric($email)) {
+    echo "Digitar somente letras";
+    exit();
+} else if (preg_match('/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/', $email)) {
+    echo "Campo email invalido";
     exit();
 }
 
@@ -135,6 +163,8 @@ function limpaPost($valor)
     return $valor;
 }
 
+
+
 $usuarioExiste = mysqli_query($conexao, "SELECT * FROM usuarios WHERE cpf = '$cpf'", MYSQLI_STORE_RESULT);
 if (@mysqli_num_rows($usuarioExiste) > 0) {
     echo '
@@ -143,8 +173,8 @@ if (@mysqli_num_rows($usuarioExiste) > 0) {
         </script>
     ';
 } else {
-    $sql = "INSERT INTO usuarios(nome, sobrenome, data_nascimento, senha, endereco, cep, complemento, telefone, cpf, cidade, estado) 
-    VALUES ('$nome', '$sobreNome', '$dataNascimento', '$senha', '$endereco', '$cep', '$complemento', '$telefone', '$cpf', '$cidade', '$estado')";
+    $sql = "INSERT INTO usuarios(nome, sobrenome, email, data_nascimento, senha, endereco, cep, complemento, telefone, cpf, cidade, estado) 
+    VALUES ('$nome', '$sobreNome', '$email', '$dataNascimento', '$senha', '$endereco', '$cep', '$complemento', '$telefone', '$cpf', '$cidade', '$estado')";
     $result = mysqli_query($conexao, $sql, MYSQLI_STORE_RESULT);
 
 
@@ -157,8 +187,9 @@ if (@mysqli_num_rows($usuarioExiste) > 0) {
    
 }
 
-echo '<script type="text/javascript">location.replace("login.html");</script>';
+ echo '<script type="text/javascript">location.replace("formulario.html");</script>';
 
 ?>
+
 
 
