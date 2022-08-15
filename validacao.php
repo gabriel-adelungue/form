@@ -15,20 +15,19 @@ $cidade = limpaPost($_POST["cidade"]);
 $estado = limpaPost($_POST["estado"]);
 $email = limpaPost($_POST["email"]);
 
-$arquivo = "
-    <html>
-        <p>Seja bem vindo ao nosso sistema <b>$nome</b>!</p>
-    </html>
-";
+// $arquivo = "
+//     <html>
+//         <p>Seja bem vindo ao nosso sistema <b>$nome</b>!</p>
+//     </html>
+// ";
 
-$assunto = "Mensagem de Boas Vindas";
+// $assunto = "Mensagem de Boas Vindas";
 
-$headers  = "MIME-Version: 1.0\n";
-$headers .= "Content-type: text/html; charset=iso-8859-1\n";
-$headers .= "From: $nome <$email>";
+// $headers  = "MIME-Version: 1.0\n";
+// $headers .= "Content-type: text/html; charset=iso-8859-1\n";
+// $headers .= "From: $nome <$email>";
 
-mail($email, $assunto, $arquivo, $headers);
-
+// mail($email, $assunto, $arquivo, $headers);
 
 if (empty($nome)) {
     echo "Favor preencher campo Nome";
